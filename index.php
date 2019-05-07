@@ -10,8 +10,8 @@
    * Listar todos os livros
    */  
   $app->get('/books', function (Request $request, Response $response) use ($app) {
-    $response->getBody()->write("Listando todos os livros");
-    return $response;
+    $return = $response->withJson(['msg' => 'Listando todos os livros', 200]);
+    return $return;
   });
 
   /**
@@ -20,36 +20,39 @@
   $app->get('/books/{id}', function (Request $request, Response $response) use ($app) {
     $route = $request->getAttribute('route');
     $id = $route->getArgument('id');
-    $response->getBody()->write("Exibindo dados do livro {$id}");
-    return $response;
+
+    $return = $response->withJson(['msg' => "Exibindo dados do livro {$id}", 200]);
+    return $return;
   });
 
   /**
    * Cadastra um novo livro
    */
-  $app->get('/books', function (Request $request, Response $response) use ($app) {
-    $response->getBody()->write("Livro cadastrado com sucesso!");
-    return $response;
+  $app->post('/books', function (Request $request, Response $response) use ($app) {
+    $return = $response->withJson(['msg' => 'Livro cadastrado com sucesso!', 201]);
+    return $return;
   });
 
   /**
    * Atualiza dados de um livro
    */
-  $app->get('/books/{id}', function (Request $request, Response $response) use ($app) {
+  $app->put('/books/{id}', function (Request $request, Response $response) use ($app) {
     $route = $request->getAttribute('route');
     $id = $route->getArgument('id');
-    $response->getBody()->write("Alterando dados do livro {$id}");
-    return $response;
+
+    $return = $response->withJson(['msg' => "Alterando dados do livro {$id}", 200]);
+    return $return;
   });
 
   /**
    * Deleta um livro informando o id
    */
-  $app->get('/books/{id}', function (Request $request, Response $response) use ($app) {
+  $app->delete('/books/{id}', function (Request $request, Response $response) use ($app) {
     $route = $request->getAttribute('route');
     $id = $route->getArgument('id');
-    $response->getBody()->write("Deletando o livro {$id}");
-    return $response;
+
+    $return = $response->withJson(['msg' => "Deletando o livro {$id}", 204]);
+    return $return;
   });
 
   $app->run();
