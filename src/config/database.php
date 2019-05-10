@@ -1,6 +1,6 @@
 <?php
   class DatabaseConnection {
-    private $dbHost = 'locahost';
+    private $dbHost = 'localhost';
     private $dbUser = 'root';
     private $dbPass = 'root';
     private $dbName = 'mybooksweb_db';
