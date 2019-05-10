@@ -30,3 +30,39 @@ $app->get('/api/usuarios', function (Request $request, Response $response) {
     echo $exp->getMessage() ;
   }
 });
+
+/**
+ * Método para criar um novo usuário
+ */
+$app->post('/api/usuarios/novousuario', function (Request $request, Response $response) {
+  
+  $user = new User(); 
+  $user->setNome($request->getParam('nome'));
+  $user->setEmail($request->getParam('email'));
+  $user->setLogin($request->getParam('login'));
+  $user->setSenha($request->getParam('senha'));
+  
+  $querySQL = "INSERT INTO usuario (nome, email, login, senha)
+               VALUES (:nome, :email, :login, :senha)";
+  
+  try {
+    $dataBase = new DatabaseConnection();
+    $dataBase = $dataBase->connectDatabase();
+
+    $resultQuery = $dataBase->prepare($querySQL);
+
+    $resultQuery->bindParam(':nome', $user->getNome());
+    $resultQuery->bindParam(':email', $user->getEmail());
+    $resultQuery->bindParam(':login', $user->getLogin());
+    $resultQuery->bindParam(':senha', $user->getSenha());
+    
+    $resultQuery->execute();
+
+    echo json_encode("Novo usuário cadastrado com sucesso!");
+
+    $resultQuery = null;
+    $dataBase = null;
+  } catch (PDOExption $exp) {
+    echo $exp->getMessage();
+  }
+});
