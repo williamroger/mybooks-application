@@ -12,7 +12,6 @@ $app = new \Slim\App;
 /**
  * Chamada para rotas
  */
-require '../src/routes/users.php';
-require '../src/routes/books.php';
+require '../src/routes/routes.php';
 
 $app->run();
