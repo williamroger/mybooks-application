@@ -4,14 +4,16 @@
   
   use Psr\Http\Message\RequestInterface as Request;
   use Psr\Http\Message\ResponseInterface as Response;
+  use App\DAO\BibliotecaDAO;
 
-  final class BibliotecaController
+final class BibliotecaController
   {
     public function getLivros(Request $request, Response $response, array $args): Response {
-      $response = $response->withJson([
-        "message" => "Juntos em Shallow now"
-      ]);
+      $biliotecaDAO = new BibliotecaDAO();
+      $livros = $biliotecaDAO->getLivrosBiblioteca();
 
+      $response = $response->withJson($livros);
+      
       return $response;
     }
   }
