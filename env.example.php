@@ -1,0 +1,8 @@
+<?php
+
+putenv('DISPLAY_ERROR_DETAILS=' . true);
+putenv('MYBOOKS_WEB_MYSQL_HOST=');
+putenv('MYBOOKS_WEB_MYSQL_PORT=');
+putenv('MYBOOKS_WEB_MYSQL_DBNAME=');
+putenv('MYBOOKS_WEB_MYSQL_USER=');
+putenv('MYBOOKS_WEB_MYSQL_PASS=');
