@@ -154,7 +154,7 @@ $app->post('/api/livros/novolivro', function (Request $request, Response $respon
   $book->setIsLido($request->getParam('lido'));
   $book->setUsuarioId($request->getParam('id-usuario'));
   
-  $querySQL = "INSERT INTO livro (titulo, autor, edicao, indicacao, preco,                                     imagem, descricao, biblioteca, lido, usuario_id)
+  $querySQL = "INSERT INTO livro (titulo, autor, edicao, indicacao, preco, imagem, descricao, biblioteca, lido, usuario_id)
                VALUES (:titulo, :autor, :edicao, :indicacao, :preco, :imagem, :descricao, :biblioteca, :lido, :usuario_id)";
   
   try {

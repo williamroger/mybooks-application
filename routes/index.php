@@ -2,7 +2,7 @@
   
   use function src\slimConfiguration;
   use App\Controllers\BibliotecaController;
-  use App\Controllers\HomeController;
+  use App\Controllers\UsuarioController;
 
   $app = new \Slim\App(slimConfiguration());
 // ============================================================
@@ -12,7 +12,7 @@
   $app->put('/biblioteca', BibliotecaController::class . ':updateLivro');
   $app->delete('/biblioteca', BibliotecaController::class . ':deleteLivro');
 
-  // $app->get('/listadedesejos', ListaDeDesejosController::class . ':getLivros');
-
+  $app->get('/usuario', UsuarioController::class . ':getUsuarios');
+  $app->post('/usuario', UsuarioController::class . ':insertUsuario'); 
   // ============================================================
   $app->run();

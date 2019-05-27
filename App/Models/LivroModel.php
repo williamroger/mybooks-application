@@ -60,7 +60,7 @@
      */ 
     public function getId()
     {
-        return $this->id;
+      return $this->id;
     }
 
     /**
@@ -70,7 +70,7 @@
      */ 
     public function getTitulo()
     {
-        return $this->titulo;
+      return $this->titulo;
     }
 
     /**
@@ -82,9 +82,9 @@
      */ 
     public function setTitulo(string $titulo)
     {
-        $this->titulo = $titulo;
+      $this->titulo = $titulo;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -94,7 +94,7 @@
      */ 
     public function getAutor()
     {
-        return $this->autor;
+      return $this->autor;
     }
 
     /**
@@ -106,9 +106,9 @@
      */ 
     public function setAutor(string $autor)
     {
-        $this->autor = $autor;
+      $this->autor = $autor;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -118,7 +118,7 @@
      */ 
     public function getEdicao()
     {
-        return $this->edicao;
+      return $this->edicao;
     }
 
     /**
@@ -130,9 +130,9 @@
      */ 
     public function setEdicao(string $edicao)
     {
-        $this->edicao = $edicao;
+      $this->edicao = $edicao;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -142,7 +142,7 @@
      */ 
     public function getIndicacao()
     {
-        return $this->indicacao;
+      return $this->indicacao;
     }
 
     /**
@@ -154,9 +154,9 @@
      */ 
     public function setIndicacao(string $indicacao)
     {
-        $this->indicacao = $indicacao;
+      $this->indicacao = $indicacao;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -166,7 +166,7 @@
      */ 
     public function getPreco()
     {
-        return $this->preco;
+      return $this->preco;
     }
 
     /**
@@ -178,9 +178,9 @@
      */ 
     public function setPreco(string $preco)
     {
-        $this->preco = $preco;
+      $this->preco = $preco;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -190,7 +190,7 @@
      */ 
     public function getImagem()
     {
-        return $this->imagem;
+      return $this->imagem;
     }
 
     /**
@@ -202,9 +202,9 @@
      */ 
     public function setImagem(string $imagem)
     {
-        $this->imagem = $imagem;
+      $this->imagem = $imagem;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -214,7 +214,7 @@
      */ 
     public function getDescricao()
     {
-        return $this->descricao;
+      return $this->descricao;
     }
 
     /**
@@ -226,9 +226,9 @@
      */ 
     public function setDescricao(string $descricao)
     {
-        $this->descricao = $descricao;
+      $this->descricao = $descricao;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -238,7 +238,7 @@
      */ 
     public function getBiblioteca()
     {
-        return $this->biblioteca;
+      return $this->biblioteca;
     }
 
     /**
@@ -250,9 +250,9 @@
      */ 
     public function setBiblioteca(int $biblioteca)
     {
-        $this->biblioteca = $biblioteca;
+      $this->biblioteca = $biblioteca;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -262,7 +262,7 @@
      */ 
     public function getLido()
     {
-        return $this->lido;
+      return $this->lido;
     }
 
     /**
@@ -274,9 +274,9 @@
      */ 
     public function setLido(int $lido)
     {
-        $this->lido = $lido;
+      $this->lido = $lido;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -286,7 +286,7 @@
      */ 
     public function getUsuarioId()
     {
-        return $this->usuarioId;
+      return $this->usuarioId;
     }
 
     /**
@@ -298,9 +298,9 @@
      */ 
     public function setUsuarioId(int $usuarioId)
     {
-        $this->usuarioId = $usuarioId;
+      $this->usuarioId = $usuarioId;
 
-        return $this;
+      return $this;
     }
 
     /**
@@ -310,7 +310,7 @@
      */ 
     public function getEditora()
     {
-        return $this->editora;
+      return $this->editora;
     }
 
     /**
@@ -322,8 +322,8 @@
      */ 
     public function setEditora(string $editora)
     {
-        $this->editora = $editora;
+      $this->editora = $editora;
 
-        return $this;
+      return $this;
     }
   }
