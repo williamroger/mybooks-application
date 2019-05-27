@@ -16,7 +16,9 @@ final class BibliotecaController
 
     $response = $response->withJson($livros);
     
-    return $response;
+    return $response->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
   }
 
   public function insertLivro(Request $request, Response $response, array $args): Response 
