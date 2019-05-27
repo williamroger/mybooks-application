@@ -36,7 +36,6 @@ class BibliotecaDAO extends Conexao
     $statement = $this->pdo
       ->prepare('INSERT INTO livros VALUES (
         null,
-        :usuario_id, 
         :titulo, 
         :autor, 
         :edicao, 
@@ -46,10 +45,11 @@ class BibliotecaDAO extends Conexao
         :descricao, 
         :biblioteca, 
         :lido, 
+        :usuario_id, 
         :editora
       );');
+
     $statement->execute([
-      'usuario_id' => $livro->getUsuarioId(),
       'titulo' => $livro->getTitulo(),
       'autor' => $livro->getAutor(),
       'edicao' => $livro->getEdicao(),
@@ -59,6 +59,7 @@ class BibliotecaDAO extends Conexao
       'descricao' => $livro->getDescricao(),
       'biblioteca' => $livro->getBiblioteca(),
       'lido' => $livro->getLido(),
+      'usuario_id' => $livro->getUsuarioId(),
       'editora' => $livro->getEditora()
     ]);
   }
