@@ -2,6 +2,7 @@
 
   namespace App\DAO;
 
+  
   abstract class Conexao
   {
     /**
