@@ -46,7 +46,7 @@ final class BibliotecaController
       'message' => 'Livro cadastrado com sucesso!'
     ]);
 
-    return $response->withHeader('Access-Control-Allow-Origin', '*')
+    return $response->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
              ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
              ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
   }
