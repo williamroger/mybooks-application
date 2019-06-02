@@ -13,6 +13,7 @@
   $app->delete('/biblioteca', BibliotecaController::class . ':deleteLivro');
 
   $app->get('/usuario', UsuarioController::class . ':getUsuarios');
-  $app->post('/usuario', UsuarioController::class . ':insertUsuario'); 
+  $app->post('/usuario/novousuario', UsuarioController::class . ':insertUsuario'); 
+  $app->post('/usuario/usuariologin', UsuarioController::class . ':getUsuarioLogin'); 
   // ============================================================
   $app->run();

@@ -16,7 +16,9 @@ final class UsuarioController
 
     $response = $response->withJson($usuarios);
 
-    return $response;
+    return $response->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+      ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+      ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
   }
 
   public function insertUsuario(Request $request, Response $response, array $args): Response
@@ -37,6 +39,8 @@ final class UsuarioController
       'message' => 'Usuario cadastrado com sucesso!'
     ]);
 
-    return $response;
+    return $response->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+      ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+      ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
   }
 }
