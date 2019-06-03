@@ -44,7 +44,7 @@ final class UsuarioController
       ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
   }
 
-  public function usuarioLogin(Request $request, Response $response, array $args) 
+  public function authUsuario(Request $request, Response $response, array $args) 
   {
     $data = $request->getParsedBody();
     $usuarioDAO = new UsuarioDAO();
@@ -52,15 +52,18 @@ final class UsuarioController
     $login = $data['login'];
     $senha = $data['senha'];
 
-    $usuario = $usuarioDAO->validaLoginSenha($login, $senha);
-
+    $usuario = $usuarioDAO->auth($login, $senha);
+ 
     if ($usuario) {
       $response = $response->withJson([
+        'data' => $usuario,
+        'error' => 0,
         'message' => 'Usuário validado com sucesso!'
       ]);
     } else {
       $response = $response->withJson([
-        'message' => 'Não encontramos este usuário verifique seus dados!'
+        'error' => 1,
+        'message' => 'Login ou Senha está incorreto!'
       ]);
     }
     

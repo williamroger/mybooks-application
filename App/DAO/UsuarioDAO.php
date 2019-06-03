@@ -44,21 +44,22 @@ class UsuarioDAO extends Conexao
     ]);
   }
 
-  public function validaLoginSenha($login, $senha): array
-  {  
+  public function auth($login, $senha): array
+  { 
+    $resultado = false;
     $usuario = $this->pdo
-      ->query( 'SELECT 
+      ->prepare( 'SELECT 
                  id,
                  nome,
                  email,
                  login,
                  senha
-                 FROM usuarios WHERE login = :login AND senha = :senha);')
-      ->execute([
+                 FROM usuarios WHERE login = :login AND senha = :senha;');
+    $usuario->execute([
         'login' => $login,
         'senha' => $senha
-      ])
-      ->fetchAll(\PDO::FETCH_ASSOC);
+      ]);
+    $usuario = $usuario->fetchAll(\PDO::FETCH_ASSOC);
     
     return $usuario;
   }
