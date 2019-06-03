@@ -43,4 +43,23 @@ final class UsuarioController
       ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
       ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
   }
+
+  public function getUsuarioLogin(Request $request, Response $response, array $args) 
+  {
+    $data = $request->getParsedBody();
+    $usuarioDAO = new UsuarioDAO();
+
+    $usuario = new UsuarioModel();
+
+    $usuario->setLogin($data['login'])
+      ->setSenha($data['senha']);
+    
+    $response = $response->withJson([
+      'message' => 'Usuário validado com sucesso!'
+    ]);
+
+    return $response->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+      ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+      ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
+  }
 }

@@ -43,5 +43,23 @@ class UsuarioDAO extends Conexao
       'senha' => $usuario->getSenha()
     ]);
   }
+
+  public function validaLoginSenha(UsuarioModel $usuario): array
+  {  
+    $statement = $this->pdo
+      ->prepare('SELECT 
+                 id,
+                 nome,
+                 email,
+                 login,
+                 senha
+                 FROM usuarios WHERE login = :login AND senha = :senha);');
+    $statement->execute([
+      'login' => $usuario->getLogin(),
+      'senha' => $usuario->getSenha()
+    ]);
+    
+    return 1;
+  }
 }
 
