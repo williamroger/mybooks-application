@@ -57,12 +57,12 @@ final class UsuarioController
     if ($usuario) {
       $response = $response->withJson([
         'data' => $usuario,
-        'error' => 0,
+        'success' => true,
         'message' => 'Usuário validado com sucesso!'
       ]);
     } else {
       $response = $response->withJson([
-        'error' => 1,
+        'success' => false,
         'message' => 'Login ou Senha está incorreto!'
       ]);
     }
