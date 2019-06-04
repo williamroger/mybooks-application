@@ -14,6 +14,6 @@
 
   $app->get('/usuario', UsuarioController::class . ':getUsuarios');
   $app->post('/usuario/novousuario', UsuarioController::class . ':insertUsuario'); 
-  $app->get('/auth', UsuarioController::class . ':authUsuario'); 
+  $app->post('/auth', UsuarioController::class . ':authUsuario'); 
   // ============================================================
   $app->run();
