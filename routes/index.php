@@ -10,10 +10,11 @@
   $app->get('/biblioteca/livros', BibliotecaController::class . ':getLivros');
   $app->post('/biblioteca/adicionarlivro', BibliotecaController::class . ':insertLivro');
   $app->put('/biblioteca', BibliotecaController::class . ':updateLivro');
-  $app->delete('/biblioteca', BibliotecaController::class . ':deleteLivro');
+  $app->delete('/biblioteca/excluirlivro', BibliotecaController::class . ':deleteLivro');
 
-  $app->get('/usuario', UsuarioController::class . ':getUsuarios');
+  $app->get('/usuario/usuarios', UsuarioController::class . ':getUsuarios');
   $app->post('/usuario/novousuario', UsuarioController::class . ':insertUsuario'); 
   $app->post('/auth', UsuarioController::class . ':authUsuario'); 
+  $app->delete('/usuario/excluirusuario', UsuarioController::class . ':deleteUsuario'); 
   // ============================================================
   $app->run();

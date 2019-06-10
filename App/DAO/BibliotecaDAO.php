@@ -11,9 +11,11 @@ class BibliotecaDAO extends Conexao
     parent::__construct();
   }
 
-  public function getLivrosBiblioteca(): array {
+  public function getLivrosBiblioteca(): array 
+  {
     $livros = $this->pdo
       ->query('SELECT 
+                id,
                 titulo,
                 autor,
                 edicao,
@@ -31,7 +33,8 @@ class BibliotecaDAO extends Conexao
     return $livros;
   }
 
-  public function insertLivroBiblioteca(LivroModel $livro): void {
+  public function insertLivroBiblioteca(LivroModel $livro): void 
+  {
 
     $statement = $this->pdo
       ->prepare('INSERT INTO livros VALUES (
@@ -61,6 +64,15 @@ class BibliotecaDAO extends Conexao
       'lido' => $livro->getLido(),
       'usuario_id' => $livro->getUsuarioId(),
       'editora' => $livro->getEditora()
+    ]);
+  }
+
+  public function deleteLivroBiblioteca(int $id): void 
+  {
+    $statement = $this->pdo
+      ->prepare('DELETE FROM livros WHERE id = :id');
+    $statement->execute([
+      'id' => $id
     ]);
   }
 }

@@ -60,8 +60,19 @@ final class BibliotecaController
 
   public function deleteLivro(Request $request, Response $response, array $args): Response
   {
-    $response = $response->withJson();
+    $queryParams = $request->getQueryParams();
+    $bibliotecaDAO = new BibliotecaDAO();
+    $id = (int)$queryParams['id'];
 
-    return $response;
+    $bibliotecaDAO->deleteLivroBiblioteca($id);
+    
+    $response = $response->withJson([
+      'success' => true,
+      'message' => 'Livro excluído com sucesso!'
+    ]);
+
+    return $response->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
   }
 }

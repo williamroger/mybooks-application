@@ -71,4 +71,22 @@ final class UsuarioController
       ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
       ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
   }
+
+  public function deleteUsuario(Request $request, Response $response, array $args) 
+  {
+    $queryParams = $request->getQueryParams();
+    $usuarioDAO = new UsuarioDAO();
+    $id = (int)$queryParams['id'];
+
+    $usuarioDAO->deleteUsuario($id);
+
+    $response = $response->withJson([
+      'success' => true,
+      'message' => 'Usuario excluído com sucesso!'
+    ]);
+
+    return $response->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
+  }
 }

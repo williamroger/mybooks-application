@@ -63,5 +63,14 @@ class UsuarioDAO extends Conexao
     
     return $usuario;
   }
+
+  public function deleteUsuario(int $id): void 
+  {
+    $statement = $this->pdo
+      ->prepare('DELETE FROM usuarios WHERE id = :id');
+    $statement->execute([
+      'id' => $id
+    ]);
+  }
 }
 
