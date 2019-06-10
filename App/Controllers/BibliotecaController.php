@@ -52,10 +52,34 @@ final class BibliotecaController
   }
 
   public function updateLivro(Request $request, Response $response, array $args): Response
-  {
-    $response = $response->withJson();
+  { 
+    $data = $request->getParsedBody();
+    $bibliotacaDAO = new BibliotecaDAO();
+    $livro = new LivroModel();
 
-    return $response;
+    $livro->setId((int)$data['id'])
+      ->setTitulo($data['titulo'])
+      ->setAutor($data['autor'])
+      ->setEdicao($data['edicao'])
+      ->setIndicacao($data['indicacao'])
+      ->setPreco($data['preco'])
+      ->setImagem($data['imagem'])
+      ->setDescricao($data['descricao'])
+      ->setBiblioteca($data['biblioteca'])
+      ->setLido($data['lido'])
+      ->setUsuarioId($data['usuario_id'])
+      ->setEditora($data['editora']);
+    
+    $bibliotacaDAO->updateLivroBiblioteca($livro);
+
+    $response = $response->withJson([
+      'success' => true,
+      'message' => 'Livro atualizado com sucesso!'
+    ]);
+
+    return $response->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
   }
 
   public function deleteLivro(Request $request, Response $response, array $args): Response
@@ -65,7 +89,7 @@ final class BibliotecaController
     $id = (int)$queryParams['id'];
 
     $bibliotecaDAO->deleteLivroBiblioteca($id);
-    
+
     $response = $response->withJson([
       'success' => true,
       'message' => 'Livro excluído com sucesso!'

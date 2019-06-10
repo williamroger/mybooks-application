@@ -75,4 +75,35 @@ class BibliotecaDAO extends Conexao
       'id' => $id
     ]);
   }
+
+  public function updateLivroBiblioteca(LivroModel $livro): void 
+  {
+    $statement = $this->pdo
+      ->prepare('UPDATE livros SET 
+                  titulo = :titulo,
+                  autor = :autor,
+                  edicao = :edicao,
+                  indicacao = :indicacao.
+                  preco = :preco,
+                  imagem = :imagem,
+                  descricao = :descricao,
+                  biblioteca = :biblioteca,
+                  lido = :lido,
+                  editora = :editora
+                 WHERE id = :id');
+    $statement->execute([
+      'id' => $id,
+      'titulo' => $livro->getTitulo(),
+      'autor' => $livro->getAutor(),
+      'edicao' => $livro->getEdicao(),
+      'indicacao' => $livro->getIndicacao(),
+      'preco' => $livro->getPreco(),
+      'imagem' => $livro->getImagem(),
+      'descricao' => $livro->getDescricao(),
+      'biblioteca' => $livro->getBiblioteca(),
+      'lido' => $livro->getLido(),
+      'usuario_id' => $livro->getUsuarioId(),
+      'editora' => $livro->getEditora()
+    ]);
+  }
 }
