@@ -28,8 +28,7 @@ final class BibliotecaController
 
     $livro = new LivroModel();
     
-    $livro->setUsuarioId($data['usuario_id'])
-          ->setTitulo($data['titulo'])
+    $livro->setTitulo($data['titulo'])
           ->setAutor($data['autor'])
           ->setEdicao($data['edicao'])
           ->setIndicacao($data['indicacao'])
@@ -55,22 +54,23 @@ final class BibliotecaController
   { 
     $data = $request->getParsedBody();
     $bibliotacaDAO = new BibliotecaDAO();
+
+    $id = (int)$data['id'];
+    
     $livro = new LivroModel();
 
-    $livro->setId((int)$data['id'])
-      ->setTitulo($data['titulo'])
+    $livro->setTitulo($data['titulo'])
       ->setAutor($data['autor'])
       ->setEdicao($data['edicao'])
       ->setIndicacao($data['indicacao'])
       ->setPreco($data['preco'])
       ->setImagem($data['imagem'])
       ->setDescricao($data['descricao'])
-      ->setBiblioteca($data['biblioteca'])
-      ->setLido($data['lido'])
-      ->setUsuarioId($data['usuario_id'])
+      ->setBiblioteca((int)$data['biblioteca'])
+      ->setLido((int)$data['lido'])
       ->setEditora($data['editora']);
-    
-    $bibliotacaDAO->updateLivroBiblioteca($livro);
+  
+    $bibliotacaDAO->updateLivroBiblioteca($id, $livro);
 
     $response = $response->withJson([
       'success' => true,

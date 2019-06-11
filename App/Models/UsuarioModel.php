@@ -36,6 +36,20 @@ final class UsuarioModel
   }
 
   /**
+   * Set the value of id
+   *
+   * @param  int  $id
+   *
+   * @return  self
+   */ 
+  public function setId(int $id)
+  {
+    $this->id = $id;
+
+    return $this;
+  }
+  
+  /**
    * Get the value of nome
    * @return  string
    */ 

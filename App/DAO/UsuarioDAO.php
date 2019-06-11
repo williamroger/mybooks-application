@@ -72,5 +72,23 @@ class UsuarioDAO extends Conexao
       'id' => $id
     ]);
   }
+
+  public function updateUsuario($id, UsuarioModel $usuario): void 
+  {
+    $statement = $this->pdo
+      ->prepare('UPDATE usuarios SET 
+        nome = :nome,
+        email = :email,
+        login = :login,
+        senha = :senha 
+        WHERE id = :id');
+    $statement->execute([
+      'nome' => $usuario->getNome(),
+      'email' => $usuario->getEmail(),
+      'login' => $usuario->getLogin(),
+      'senha' => $usuario->getSenha(),
+      'id' => $id
+    ]);
+  }
 }
 

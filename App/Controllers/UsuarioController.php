@@ -44,7 +44,7 @@ final class UsuarioController
       ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
   }
 
-  public function authUsuario(Request $request, Response $response, array $args) 
+  public function authUsuario(Request $request, Response $response, array $args): Response 
   {
     $data = $request->getParsedBody();
     $usuarioDAO = new UsuarioDAO();
@@ -72,7 +72,7 @@ final class UsuarioController
       ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
   }
 
-  public function deleteUsuario(Request $request, Response $response, array $args) 
+  public function deleteUsuario(Request $request, Response $response, array $args): Response 
   {
     $queryParams = $request->getQueryParams();
     $usuarioDAO = new UsuarioDAO();
@@ -83,6 +83,30 @@ final class UsuarioController
     $response = $response->withJson([
       'success' => true,
       'message' => 'Usuario excluído com sucesso!'
+    ]);
+
+    return $response->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
+             ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATH, OPTIONS');
+  }
+
+  public function updateUsuario(Request $request, Response $response, array $args): Response
+  { 
+    $data = $request->getParsedBody();
+    $usuarioDAO = new UsuarioDAO();
+    $id = (int)$data['id'];
+
+    $usuario = new UsuarioModel();
+    $usuario->setNome($data['nome'])
+            ->setEmail($data['email'])
+            ->setLogin($data['login'])
+            ->setSenha($data['senha']);
+
+    $usuarioDAO->updateUsuario($id, $usuario);
+    
+    $response = $response->withJson([
+      'success' => true,
+      'message' => 'Usuario atualizado com sucesso!'
     ]);
 
     return $response->withHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
