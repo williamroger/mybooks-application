@@ -28,7 +28,8 @@ final class BibliotecaController
 
     $livro = new LivroModel();
     
-    $livro->setTitulo($data['titulo'])
+    $livro->setUsuarioId($data['usuario_id'])
+          ->setTitulo($data['titulo'])
           ->setAutor($data['autor'])
           ->setEdicao($data['edicao'])
           ->setIndicacao($data['indicacao'])

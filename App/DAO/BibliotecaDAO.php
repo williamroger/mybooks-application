@@ -35,7 +35,6 @@ class BibliotecaDAO extends Conexao
 
   public function insertLivroBiblioteca(LivroModel $livro): void 
   {
-
     $statement = $this->pdo
       ->prepare('INSERT INTO livros VALUES (
         null,
